@@ -41,14 +41,12 @@ function App() {
       }
 
       const updatedInvestmentParams = { ...prevParameters };
-      updatedInvestmentParams[key] = newValue;
+      updatedInvestmentParams[key] = +newValue;
 
       // Update the shouldCalculate variable
       shouldCalculate = areAllParamsEntered(updatedInvestmentParams);
       if (shouldCalculate) {
-        console.log("updatedInvestmentParams")
         console.log(updatedInvestmentParams)
-        console.log("Calculating")
         calculateResults(updatedInvestmentParams);
       }
 

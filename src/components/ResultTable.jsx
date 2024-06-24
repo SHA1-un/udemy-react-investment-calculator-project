@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import Result from "./Result";
 
 export default function ResultTable({ results }) {

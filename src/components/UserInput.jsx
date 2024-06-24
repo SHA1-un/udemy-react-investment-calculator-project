@@ -1,4 +1,4 @@
-import { useState } from "react";
+import InputField from "./InputField";
 
 export default function UserInput({ onInvestmentParameterChange }) {
   const handleInput = (event) => {
@@ -8,28 +8,13 @@ export default function UserInput({ onInvestmentParameterChange }) {
   return (
     <section id="user-input">
       <p className="input-group">
-        <div>
-          <label >Initial Investment</label>
-          <input id="initial-investment" onChange={handleInput} type="text" />
-        </div>
-
-        <div>
-          <label >Annual Investment</label>
-          <input id="annual-investment" onChange={handleInput} type="text" />
-        </div>
+        <InputField componentId="initial-investment" inputLabel="Initial Investment" handleInput={handleInput} inputType="number" />
+        <InputField componentId="annual-investment" inputLabel="Annual Investment" handleInput={handleInput} inputType="number" />
       </p>
 
       <p className="input-group">
-        <div>
-          <label >Expected Return</label>
-          <input id="expected-return" onChange={handleInput} type="text" />
-
-        </div>
-
-        <div>
-          <label >Duration</label>
-          <input id="duration" onChange={handleInput} type="text" />
-        </div>
+        <InputField componentId="expected-return" inputLabel="Expected Return" handleInput={handleInput} inputType="number" />
+        <InputField componentId="duration" inputLabel="Duration" handleInput={handleInput} inputType="number" />
       </p>
     </section>
   );
