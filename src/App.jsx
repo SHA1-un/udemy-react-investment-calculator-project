@@ -61,11 +61,11 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <Header />
-      <UserInput onInvestmentParameterChange={updateInvestmentParameters} />
+      <UserInput onChange={updateInvestmentParameters} />
       <ResultTable results={results} />
-    </div>
+    </>
   )
 }
 

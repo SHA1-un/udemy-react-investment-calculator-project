@@ -1,8 +1,8 @@
 import InputField from "./InputField";
 
-export default function UserInput({ onInvestmentParameterChange }) {
+export default function UserInput({ onChange }) {
   const handleInput = (event) => {
-    onInvestmentParameterChange(event.target.id, event.target.value)
+    onChange(event.target.id, event.target.value)
   }
 
   return (
