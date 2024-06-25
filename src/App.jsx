@@ -2,33 +2,18 @@ import { useState } from "react";
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 import ResultTable from "./components/ResultTable";
-import { calculateInvestmentResults } from "./util/investment";
-
-function areAllParamsEntered(investmentParameters) {
-  let allParamsEntered = true;
-  for (const [key] of Object.entries(investmentParameters)) {
-    const value = investmentParameters[key];
-    if (!value) {
-      allParamsEntered = false;
-      break;
-    }
-  }
-
-  return allParamsEntered;
-}
 
 function App() {
-  const [investmentParameters, setInvestmentParameters] = useState({
+  const [userInput, setuserInput] = useState({
     initialInvestment: 0,
     annualInvestment: 0,
     expectedReturn: 0,
     duration: 0,
   });
-  const [results, setResults] = useState([]);
   let shouldCalculate = false;
 
-  const updateInvestmentParameters = (inputId, newValue) => {
-    setInvestmentParameters(prevParameters => {
+  const updateuserInput = (inputId, newValue) => {
+    setuserInput(prevParameters => {
 
       // Get get the corresponding key for the input component
       let key = '';
@@ -43,28 +28,15 @@ function App() {
       const updatedInvestmentParams = { ...prevParameters };
       updatedInvestmentParams[key] = +newValue;
 
-      // Update the shouldCalculate variable
-      shouldCalculate = areAllParamsEntered(updatedInvestmentParams);
-      if (shouldCalculate) {
-        console.log(updatedInvestmentParams)
-        calculateResults(updatedInvestmentParams);
-      }
-
       return updatedInvestmentParams;
     });
-  }
-
-  const calculateResults = (_investmentParameters) => {
-    const results = calculateInvestmentResults(_investmentParameters);
-    console.log(results)
-    setResults(results);
   }
 
   return (
     <>
       <Header />
-      <UserInput onChange={updateInvestmentParameters} />
-      <ResultTable results={results} />
+      <UserInput onChange={updateuserInput} />
+      <ResultTable userInput={userInput} />
     </>
   )
 }
